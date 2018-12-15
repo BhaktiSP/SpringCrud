@@ -1,0 +1,42 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<beans xmlns = "http://www.springframework.org/schema/beans"
+   xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation = "http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+   
+   <bean id="database" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/jdbc" />
+		<property name="username" value="root" />
+		<property name="password" value="admin123" />
+	</bean>
+   
+   	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean" >
+		<property name="dataSource" ref="database" />
+		<property name="annotatedClasses">
+			<list>
+				<value>com.scp.java.entity.CustomerEntity</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL8Dialect</prop>
+				<prop key="hibernate.hbm2ddl.auto">create-drop</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.format_sql">true</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="cid" class="com.scp.java.bean.Customer" scope="prototype">
+		<property name="custId" value="1"></property>
+		<property name="firstname" value="yogesh"></property>
+		<property name="lastname" value="chame"></property>
+		<property name="age" value="30"></property>
+		<property name="email" value="yogymax@gmail.com"></property>
+		<property name="address" value="latur"></property>
+		<property name="balance" value="1000"></property>
+	</bean>
+
+</beans>
