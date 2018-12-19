@@ -2,6 +2,7 @@ package com.scp.java.main;
 
 import java.util.List;
 
+
 import org.springframework.context.ApplicationContext;
 
 import com.scp.java.bean.Customer;
@@ -15,14 +16,14 @@ public static void main(String[] args) {
 
 		ApplicationContext context = SeesionFactoryUtil.context;
 		Customer customer1 = (Customer)context.getBean("cid");
-		Customer customer2 = (Customer)context.getBean("cid");
+		//Customer customer2 = (Customer)context.getBean("cid");
 		customer1.setCustId(1);
-		customer2.setCustId(2);
+	//	customer2.setCustId(2);
 		
 		CustomerService service = new CustomerServiceImpl();
 		System.out.println("AddCustomer");
 		service.addCustomer(customer1);
-		service.addCustomer(customer2);
+		//service.addCustomer(customer2);
 		
 		System.out.println("getCustomer");
 		service.getCustomer(1);

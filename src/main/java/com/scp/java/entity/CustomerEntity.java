@@ -1,6 +1,7 @@
 package com.scp.java.entity;
 
 import javax.persistence.Entity;
+
 import javax.persistence.Id;
 import javax.persistence.Table;
 
